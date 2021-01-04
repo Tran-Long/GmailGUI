@@ -20,6 +20,10 @@ public class MessageAdapter extends BaseAdapter {
         this.list = list;
     }
 
+    public void setList(List<MessageModel> list) {
+        this.list = list;
+    }
+
     @Override
     public int getCount() {
         return list.size();
@@ -40,28 +44,30 @@ public class MessageAdapter extends BaseAdapter {
         ViewHolder viewHolder;
 
         if(convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.message_frame, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.message_model, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.checkFavourite = convertView.findViewById(R.id.check_favourite);
             viewHolder.peakContent = convertView.findViewById(R.id.tv_peak_content);
             viewHolder.senderName = convertView.findViewById(R.id.tv_sender_name);
+            viewHolder.subject = convertView.findViewById(R.id.tv_subject);
             viewHolder.senderIcon = convertView.findViewById(R.id.user_icon);
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder)convertView.getTag();
         }
 
-        MessageModel message =list.get(position);
-        viewHolder.senderIcon.setText(String.valueOf(message.getFirstLetter()));
-        viewHolder.senderIcon.setBackgroundResource(message.getBgResource());
-        viewHolder.senderName.setText(message.getSender());
-        viewHolder.peakContent.setText(message.getPeakContent());
-        viewHolder.checkFavourite.setChecked(message.isCheckFavourite());
+        MessageModel email =list.get(position);
+        viewHolder.senderIcon.setText(String.valueOf(email.getFirstLetter()));
+        viewHolder.senderIcon.setBackgroundResource(email.getBgResource());
+        viewHolder.senderName.setText(email.getSender());
+        viewHolder.peakContent.setText(email.getPeakContent());
+        viewHolder.subject.setText(email.getSubject());
+        viewHolder.checkFavourite.setChecked(email.isCheckFavourite());
 
         viewHolder.checkFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                message.setCheckFavourite(viewHolder.checkFavourite.isChecked());
+                email.setCheckFavourite(viewHolder.checkFavourite.isChecked());
                 notifyDataSetChanged();
             }
         });
@@ -72,6 +78,7 @@ public class MessageAdapter extends BaseAdapter {
         TextView senderIcon;
         TextView senderName;
         TextView peakContent;
+        TextView subject;
         CheckBox checkFavourite;
     }
 }

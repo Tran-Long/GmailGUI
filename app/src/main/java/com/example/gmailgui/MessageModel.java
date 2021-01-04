@@ -1,17 +1,20 @@
 package com.example.gmailgui;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class MessageModel {
+public class MessageModel implements Serializable {
     String sender;
     String peakContent;
-//    IconModel senderIcon;
+    String subject;
+    String day;
     int bgResource;
     char firstLetter;
     boolean checkFavourite;
 
-    public MessageModel(String sender, String peakContent){
+    public MessageModel(String sender, String subject, String peakContent){
         this.sender = sender;
+        this.subject = subject;
         this.peakContent = peakContent;
         this.checkFavourite = false;
         this.firstLetter = sender.charAt(0);
@@ -31,6 +34,10 @@ public class MessageModel {
 //    public IconModel getSenderIcon() {
 //        return senderIcon;
 //    }
+
+    public String getSubject() {
+        return subject;
+    }
 
     public String getPeakContent() {
         return peakContent;
@@ -66,6 +73,10 @@ public class MessageModel {
 
     public void setCheckFavourite(boolean checkFavourite) {
         this.checkFavourite = checkFavourite;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public void setFirstLetter(char firstLetter) {
