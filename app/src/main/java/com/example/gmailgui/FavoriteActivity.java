@@ -7,11 +7,12 @@ import android.view.View;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoriteActivity extends Activity {
+public class FavoriteActivity extends AppCompatActivity {
     List<MessageModel> favList;
     ListView listView;
     @Override

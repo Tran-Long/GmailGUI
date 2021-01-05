@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GmailGUI">
+        android:theme="@style/Theme.Design">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FavoriteActivity">
+        <activity android:name=".FavoriteActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
         </activity>
         <activity android:name=".ReplyActivity">

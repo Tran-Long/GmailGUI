@@ -1,5 +1,6 @@
 package com.example.gmailgui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,8 +11,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class ReplyActivity extends Activity {
+public class ReplyActivity extends AppCompatActivity {
 
     TextView receiver;
     EditText subject, content;
@@ -22,7 +24,6 @@ public class ReplyActivity extends Activity {
         receiver = findViewById(R.id.reply_to);
         subject = findViewById(R.id.reply_subject);
         content = findViewById(R.id.reply_content);
-
         Bundle bundle = getIntent().getExtras();
         receiver.setText(bundle.getString("name"));
         findViewById(R.id.btn_reply_back).setOnClickListener(new View.OnClickListener() {
